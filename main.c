@@ -39,9 +39,8 @@
 #include "global.h"
 
 #include "tmr_utils.h"
-#include "max3510x.h"
-#include "transducer.h"
 #include "board.h"
+#include "transducer.h"
 
 #include <tmr.h>
 
@@ -80,7 +79,7 @@ int main(void)
 {
 	double_t last_flow = 0.0, sum_flow, flow;
 
-	board_init(BOARD_J3_UART);  // can be BOARD_J3_UART or BOARD_MBED_UART (mbed uart set at 96008N1)
+	board_init();
 
 	uint32_t one_second = SystemCoreClock ;
 
