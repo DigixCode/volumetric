@@ -7,4 +7,4 @@ Please see volumetric/MAX35103EVKIT2_VOLUMETRIC.PDF for details.
 
 Please note that this project uses git submodules.  The proper way to clone this repository is as follows:
 
-git clone --recursive -j8 git@github.com:maxim-ic-flow/volumetric.git
+git clone --recursive -j8 https://github.com/maxim-ic-flow/volumetric.git
