@@ -1,4 +1,7 @@
 iar/
 keil/
+BUILD/
+.mbed
+*.pyc
 
 
