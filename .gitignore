@@ -3,5 +3,7 @@ keil/
 BUILD/
 .mbed
 *.pyc
+*.vpwhist
+*.vtg
 
 

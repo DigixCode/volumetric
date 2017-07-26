@@ -53,7 +53,6 @@ static volatile uint32_t	s_timeout_count;
 void max3510x_int_isr(void * pv)
 {
 	// handle MAX35103 interrupts
-	uint32_t ts = TMR32_GetCount(TIMESTAMP_TIMER);
 	uint16_t status = max3510x_interrupt_status( &g_max35103 );
 
 	if( (status & (MAX3510X_REG_INTERRUPT_STATUS_TOF|MAX3510X_REG_INTERRUPT_STATUS_TO)) == MAX3510X_REG_INTERRUPT_STATUS_TOF )

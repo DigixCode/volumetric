@@ -1,0 +1,588 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="Other C/C++"
+    WorkingDir=".">
+    <Config
+        Name="Debug"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdvolumetric_mbed"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -g %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -g -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Config
+        Name="Release"
+        Type="cpp"
+        DebugCallbackName="gdb"
+        OutputFile="%bdvolumetric_mbed"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveCurrent"
+                OutputExts="*.o"
+                RunFromDir="%rw">
+                <Exec CmdLine='cc -c -O %i %defd -o "%bd%n.o" "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link">
+                <Exec CmdLine='cc -O -o "%o" %f %libs'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" build "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%(VSLICKBIN1)vsbuild" rebuild "%w" "%r"'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='vsdebugio -prog "%o"'/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                SaveOption="SaveNone"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                RunFromDir="%rw">
+                <Exec CmdLine='"%o"'/>
+            </Target>
+        </Menu>
+    </Config>
+    <Rules Name="Compile">
+        <Rule
+            InputExts="*.s"
+            OutputExts="*.o"
+            LinkObject="1">
+            <Exec CmdLine='as -o "%bd%n.o" "%f"'/>
+        </Rule>
+    </Rules>
+    <CustomFolders>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go"></Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if"></Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters=""/>
+    </CustomFolders>
+    <Files AutoFolders="DirectoryView">
+        <Folder Name="../">
+            <F N="../global.h"/>
+            <F N="../main.cpp"/>
+        </Folder>
+        <Folder Name="../board">
+            <Folder Name="max35103evkit2">
+                <Folder Name="max3510x">
+                    <F N="../board/max35103evkit2/max3510x/max3510x.c"/>
+                    <F N="../board/max35103evkit2/max3510x/max3510x.h"/>
+                    <F N="../board/max35103evkit2/max3510x/max3510x_regs.h"/>
+                </Folder>
+                <F N="../board/max35103evkit2/board.c"/>
+                <F N="../board/max35103evkit2/board.h"/>
+                <F N="../board/max35103evkit2/transducer.c"/>
+                <F N="../board/max35103evkit2/transducer.h"/>
+            </Folder>
+        </Folder>
+        <Folder Name="../BUILD">
+            <Folder Name="MAX35103EVKIT2">
+                <Folder Name="GCC_ARM">
+                    <F N="../BUILD/MAX35103EVKIT2/GCC_ARM/mbed_config.h"/>
+                </Folder>
+            </Folder>
+        </Folder>
+        <Folder Name="../mbed-os">
+            <Folder Name="cmsis">
+                <Folder Name="TARGET_CORTEX_M">
+                    <Folder Name="TOOLCHAIN_ARM">
+                        <F N="../mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_ARM/cmsis_armcc.h"/>
+                        <F N="../mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_ARM/cmsis_armclang.h"/>
+                    </Folder>
+                    <Folder Name="TOOLCHAIN_GCC">
+                        <F N="../mbed-os/cmsis/TARGET_CORTEX_M/TOOLCHAIN_GCC/cmsis_gcc.h"/>
+                    </Folder>
+                    <F N="../mbed-os/cmsis/TARGET_CORTEX_M/cmsis_compiler.h"/>
+                </Folder>
+                <F N="../mbed-os/cmsis/arm_math.h"/>
+                <F N="../mbed-os/cmsis/core_armv8mbl.h"/>
+                <F N="../mbed-os/cmsis/core_armv8mml.h"/>
+                <F N="../mbed-os/cmsis/core_ca.h"/>
+                <F N="../mbed-os/cmsis/core_cm0.h"/>
+                <F N="../mbed-os/cmsis/core_cm0plus.h"/>
+                <F N="../mbed-os/cmsis/core_cm23.h"/>
+                <F N="../mbed-os/cmsis/core_cm3.h"/>
+                <F N="../mbed-os/cmsis/core_cm33.h"/>
+                <F N="../mbed-os/cmsis/core_cm4.h"/>
+                <F N="../mbed-os/cmsis/core_cm7.h"/>
+                <F N="../mbed-os/cmsis/core_cmSecureAccess.h"/>
+                <F N="../mbed-os/cmsis/core_sc000.h"/>
+                <F N="../mbed-os/cmsis/core_sc300.h"/>
+                <F N="../mbed-os/cmsis/tz_context.h"/>
+            </Folder>
+            <Folder Name="drivers">
+                <F N="../mbed-os/drivers/AnalogIn.cpp"/>
+                <F N="../mbed-os/drivers/AnalogIn.h"/>
+                <F N="../mbed-os/drivers/AnalogOut.h"/>
+                <F N="../mbed-os/drivers/BusIn.cpp"/>
+                <F N="../mbed-os/drivers/BusIn.h"/>
+                <F N="../mbed-os/drivers/BusInOut.cpp"/>
+                <F N="../mbed-os/drivers/BusInOut.h"/>
+                <F N="../mbed-os/drivers/BusOut.cpp"/>
+                <F N="../mbed-os/drivers/BusOut.h"/>
+                <F N="../mbed-os/drivers/CAN.cpp"/>
+                <F N="../mbed-os/drivers/CAN.h"/>
+                <F N="../mbed-os/drivers/DigitalIn.h"/>
+                <F N="../mbed-os/drivers/DigitalInOut.h"/>
+                <F N="../mbed-os/drivers/DigitalOut.h"/>
+                <F N="../mbed-os/drivers/Ethernet.cpp"/>
+                <F N="../mbed-os/drivers/Ethernet.h"/>
+                <F N="../mbed-os/drivers/FlashIAP.cpp"/>
+                <F N="../mbed-os/drivers/FlashIAP.h"/>
+                <F N="../mbed-os/drivers/I2C.cpp"/>
+                <F N="../mbed-os/drivers/I2C.h"/>
+                <F N="../mbed-os/drivers/I2CSlave.cpp"/>
+                <F N="../mbed-os/drivers/I2CSlave.h"/>
+                <F N="../mbed-os/drivers/InterruptIn.cpp"/>
+                <F N="../mbed-os/drivers/InterruptIn.h"/>
+                <F N="../mbed-os/drivers/InterruptManager.cpp"/>
+                <F N="../mbed-os/drivers/InterruptManager.h"/>
+                <F N="../mbed-os/drivers/LowPowerTicker.h"/>
+                <F N="../mbed-os/drivers/LowPowerTimeout.h"/>
+                <F N="../mbed-os/drivers/LowPowerTimer.h"/>
+                <F N="../mbed-os/drivers/PortIn.h"/>
+                <F N="../mbed-os/drivers/PortInOut.h"/>
+                <F N="../mbed-os/drivers/PortOut.h"/>
+                <F N="../mbed-os/drivers/PwmOut.h"/>
+                <F N="../mbed-os/drivers/RawSerial.cpp"/>
+                <F N="../mbed-os/drivers/RawSerial.h"/>
+                <F N="../mbed-os/drivers/Serial.cpp"/>
+                <F N="../mbed-os/drivers/Serial.h"/>
+                <F N="../mbed-os/drivers/SerialBase.cpp"/>
+                <F N="../mbed-os/drivers/SerialBase.h"/>
+                <F N="../mbed-os/drivers/SPI.cpp"/>
+                <F N="../mbed-os/drivers/SPI.h"/>
+                <F N="../mbed-os/drivers/SPISlave.cpp"/>
+                <F N="../mbed-os/drivers/SPISlave.h"/>
+                <F N="../mbed-os/drivers/Ticker.cpp"/>
+                <F N="../mbed-os/drivers/Ticker.h"/>
+                <F N="../mbed-os/drivers/Timeout.cpp"/>
+                <F N="../mbed-os/drivers/Timeout.h"/>
+                <F N="../mbed-os/drivers/Timer.cpp"/>
+                <F N="../mbed-os/drivers/Timer.h"/>
+                <F N="../mbed-os/drivers/TimerEvent.cpp"/>
+                <F N="../mbed-os/drivers/TimerEvent.h"/>
+                <F N="../mbed-os/drivers/UARTSerial.cpp"/>
+                <F N="../mbed-os/drivers/UARTSerial.h"/>
+            </Folder>
+            <Folder Name="events">
+                <Folder Name="equeue">
+                    <Folder Name="tests">
+                        <F N="../mbed-os/events/equeue/tests/prof.c"/>
+                        <F N="../mbed-os/events/equeue/tests/tests.c"/>
+                    </Folder>
+                    <F N="../mbed-os/events/equeue/equeue.c"/>
+                    <F N="../mbed-os/events/equeue/equeue.h"/>
+                    <F N="../mbed-os/events/equeue/equeue_mbed.cpp"/>
+                    <F N="../mbed-os/events/equeue/equeue_platform.h"/>
+                    <F N="../mbed-os/events/equeue/equeue_posix.c"/>
+                </Folder>
+                <F N="../mbed-os/events/Event.h"/>
+                <F N="../mbed-os/events/EventQueue.cpp"/>
+                <F N="../mbed-os/events/EventQueue.h"/>
+                <F N="../mbed-os/events/mbed_events.h"/>
+            </Folder>
+            <Folder Name="hal">
+                <Folder Name="storage_abstraction">
+                    <F N="../mbed-os/hal/storage_abstraction/Driver_Common.h"/>
+                    <F N="../mbed-os/hal/storage_abstraction/Driver_Storage.h"/>
+                </Folder>
+                <Folder Name="TARGET_FLASH_CMSIS_ALGO">
+                    <F N="../mbed-os/hal/TARGET_FLASH_CMSIS_ALGO/flash_common_algo.c"/>
+                    <F N="../mbed-os/hal/TARGET_FLASH_CMSIS_ALGO/flash_data.h"/>
+                </Folder>
+                <F N="../mbed-os/hal/analogin_api.h"/>
+                <F N="../mbed-os/hal/analogout_api.h"/>
+                <F N="../mbed-os/hal/buffer.h"/>
+                <F N="../mbed-os/hal/can_api.h"/>
+                <F N="../mbed-os/hal/can_helper.h"/>
+                <F N="../mbed-os/hal/dma_api.h"/>
+                <F N="../mbed-os/hal/emac_api.h"/>
+                <F N="../mbed-os/hal/ethernet_api.h"/>
+                <F N="../mbed-os/hal/flash_api.h"/>
+                <F N="../mbed-os/hal/gpio_api.h"/>
+                <F N="../mbed-os/hal/gpio_irq_api.h"/>
+                <F N="../mbed-os/hal/i2c_api.h"/>
+                <F N="../mbed-os/hal/lp_ticker_api.h"/>
+                <F N="../mbed-os/hal/mbed_gpio.c"/>
+                <F N="../mbed-os/hal/mbed_lp_ticker_api.c"/>
+                <F N="../mbed-os/hal/mbed_pinmap_common.c"/>
+                <F N="../mbed-os/hal/mbed_ticker_api.c"/>
+                <F N="../mbed-os/hal/mbed_us_ticker_api.c"/>
+                <F N="../mbed-os/hal/pinmap.h"/>
+                <F N="../mbed-os/hal/port_api.h"/>
+                <F N="../mbed-os/hal/pwmout_api.h"/>
+                <F N="../mbed-os/hal/rtc_api.h"/>
+                <F N="../mbed-os/hal/serial_api.h"/>
+                <F N="../mbed-os/hal/sleep_api.h"/>
+                <F N="../mbed-os/hal/spi_api.h"/>
+                <F N="../mbed-os/hal/ticker_api.h"/>
+                <F N="../mbed-os/hal/trng_api.h"/>
+                <F N="../mbed-os/hal/us_ticker_api.h"/>
+            </Folder>
+            <Folder Name="platform">
+                <F N="../mbed-os/platform/ATCmdParser.cpp"/>
+                <F N="../mbed-os/platform/ATCmdParser.h"/>
+                <F N="../mbed-os/platform/Callback.h"/>
+                <F N="../mbed-os/platform/CallChain.cpp"/>
+                <F N="../mbed-os/platform/CallChain.h"/>
+                <F N="../mbed-os/platform/CircularBuffer.h"/>
+                <F N="../mbed-os/platform/critical.h"/>
+                <F N="../mbed-os/platform/CThunk.h"/>
+                <F N="../mbed-os/platform/DirHandle.h"/>
+                <F N="../mbed-os/platform/FileBase.cpp"/>
+                <F N="../mbed-os/platform/FileBase.h"/>
+                <F N="../mbed-os/platform/FileHandle.cpp"/>
+                <F N="../mbed-os/platform/FileHandle.h"/>
+                <F N="../mbed-os/platform/FileLike.h"/>
+                <F N="../mbed-os/platform/FilePath.cpp"/>
+                <F N="../mbed-os/platform/FilePath.h"/>
+                <F N="../mbed-os/platform/FileSystemHandle.cpp"/>
+                <F N="../mbed-os/platform/FileSystemHandle.h"/>
+                <F N="../mbed-os/platform/FileSystemLike.h"/>
+                <F N="../mbed-os/platform/FunctionPointer.h"/>
+                <F N="../mbed-os/platform/LocalFileSystem.cpp"/>
+                <F N="../mbed-os/platform/LocalFileSystem.h"/>
+                <F N="../mbed-os/platform/mbed_alloc_wrappers.cpp"/>
+                <F N="../mbed-os/platform/mbed_application.c"/>
+                <F N="../mbed-os/platform/mbed_application.h"/>
+                <F N="../mbed-os/platform/mbed_assert.c"/>
+                <F N="../mbed-os/platform/mbed_assert.h"/>
+                <F N="../mbed-os/platform/mbed_board.c"/>
+                <F N="../mbed-os/platform/mbed_critical.c"/>
+                <F N="../mbed-os/platform/mbed_critical.h"/>
+                <F N="../mbed-os/platform/mbed_debug.h"/>
+                <F N="../mbed-os/platform/mbed_error.c"/>
+                <F N="../mbed-os/platform/mbed_error.h"/>
+                <F N="../mbed-os/platform/mbed_interface.c"/>
+                <F N="../mbed-os/platform/mbed_interface.h"/>
+                <F N="../mbed-os/platform/mbed_mem_trace.c"/>
+                <F N="../mbed-os/platform/mbed_mem_trace.h"/>
+                <F N="../mbed-os/platform/mbed_mktime.c"/>
+                <F N="../mbed-os/platform/mbed_mktime.h"/>
+                <F N="../mbed-os/platform/mbed_poll.cpp"/>
+                <F N="../mbed-os/platform/mbed_poll.h"/>
+                <F N="../mbed-os/platform/mbed_preprocessor.h"/>
+                <F N="../mbed-os/platform/mbed_retarget.cpp"/>
+                <F N="../mbed-os/platform/mbed_retarget.h"/>
+                <F N="../mbed-os/platform/mbed_rtc_time.cpp"/>
+                <F N="../mbed-os/platform/mbed_rtc_time.h"/>
+                <F N="../mbed-os/platform/mbed_sdk_boot.c"/>
+                <F N="../mbed-os/platform/mbed_semihost_api.c"/>
+                <F N="../mbed-os/platform/mbed_semihost_api.h"/>
+                <F N="../mbed-os/platform/mbed_sleep.h"/>
+                <F N="../mbed-os/platform/mbed_stats.c"/>
+                <F N="../mbed-os/platform/mbed_stats.h"/>
+                <F N="../mbed-os/platform/mbed_toolchain.h"/>
+                <F N="../mbed-os/platform/mbed_wait_api.h"/>
+                <F N="../mbed-os/platform/mbed_wait_api_no_rtos.c"/>
+                <F N="../mbed-os/platform/mbed_wait_api_rtos.cpp"/>
+                <F N="../mbed-os/platform/platform.h"/>
+                <F N="../mbed-os/platform/PlatformMutex.h"/>
+                <F N="../mbed-os/platform/rtc_time.h"/>
+                <F N="../mbed-os/platform/semihost_api.h"/>
+                <F N="../mbed-os/platform/SingletonPtr.h"/>
+                <F N="../mbed-os/platform/sleep.h"/>
+                <F N="../mbed-os/platform/Stream.cpp"/>
+                <F N="../mbed-os/platform/Stream.h"/>
+                <F N="../mbed-os/platform/toolchain.h"/>
+                <F N="../mbed-os/platform/Transaction.h"/>
+                <F N="../mbed-os/platform/wait_api.h"/>
+            </Folder>
+            <Folder Name="rtos">
+                <Folder Name="rtx4">
+                    <F N="../mbed-os/rtos/rtx4/cmsis_os.h"/>
+                    <F N="../mbed-os/rtos/rtx4/cmsis_os1.c"/>
+                </Folder>
+                <Folder Name="rtx5">
+                    <Folder Name="TARGET_CORTEX_M">
+                        <Folder Name="TARGET_RTOS_M4_M7">
+                            <Folder Name="TOOLCHAIN_ARM">
+                                <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_ARM/irq_cm4f.S"/>
+                            </Folder>
+                            <Folder Name="TOOLCHAIN_GCC">
+                                <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_GCC/irq_cm4f.S"/>
+                            </Folder>
+                            <Folder Name="TOOLCHAIN_IAR">
+                                <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/TARGET_RTOS_M4_M7/TOOLCHAIN_IAR/irq_cm4f.S"/>
+                            </Folder>
+                        </Folder>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/cmsis_os2.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/core_cm.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rt_OsEventObserver.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rt_OsEventObserver.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/RTX_Config.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/RTX_Config.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_delay.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_evflags.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_evr.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_evr.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_kernel.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_lib.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_lib.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_memory.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_mempool.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_msgqueue.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_mutex.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_os.h"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_semaphore.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_system.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_thread.c"/>
+                        <F N="../mbed-os/rtos/rtx5/TARGET_CORTEX_M/rtx_timer.c"/>
+                    </Folder>
+                    <F N="../mbed-os/rtos/rtx5/mbed_rtx_conf.h"/>
+                    <F N="../mbed-os/rtos/rtx5/mbed_rtx_handlers.c"/>
+                </Folder>
+                <F N="../mbed-os/rtos/Mail.h"/>
+                <F N="../mbed-os/rtos/mbed_boot.c"/>
+                <F N="../mbed-os/rtos/mbed_rtos1_types.h"/>
+                <F N="../mbed-os/rtos/mbed_rtos_storage.h"/>
+                <F N="../mbed-os/rtos/MemoryPool.h"/>
+                <F N="../mbed-os/rtos/Mutex.cpp"/>
+                <F N="../mbed-os/rtos/Mutex.h"/>
+                <F N="../mbed-os/rtos/Queue.h"/>
+                <F N="../mbed-os/rtos/rtos.h"/>
+                <F N="../mbed-os/rtos/rtos_idle.c"/>
+                <F N="../mbed-os/rtos/rtos_idle.h"/>
+                <F N="../mbed-os/rtos/RtosTimer.cpp"/>
+                <F N="../mbed-os/rtos/RtosTimer.h"/>
+                <F N="../mbed-os/rtos/Semaphore.cpp"/>
+                <F N="../mbed-os/rtos/Semaphore.h"/>
+                <F N="../mbed-os/rtos/Thread.cpp"/>
+                <F N="../mbed-os/rtos/Thread.h"/>
+            </Folder>
+            <Folder Name="targets">
+                <Folder Name="TARGET_Maxim">
+                    <Folder Name="TARGET_MAX32620C">
+                        <Folder Name="device">
+                            <Folder Name="TOOLCHAIN_ARM_STD">
+                                <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/TOOLCHAIN_ARM_STD/startup_max32620.s"/>
+                            </Folder>
+                            <Folder Name="TOOLCHAIN_GCC_ARM">
+                                <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/TOOLCHAIN_GCC_ARM/startup_max32620.S"/>
+                            </Folder>
+                            <Folder Name="TOOLCHAIN_IAR">
+                                <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/TOOLCHAIN_IAR/startup_max32620.s"/>
+                            </Folder>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/adc_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/aes_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/clkman_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/cmsis.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/crc_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/device_nvic.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/flc_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/gpio_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/i2cm_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/i2cs_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/icc_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/ioman_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/maa_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/max32620.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/mxc_device.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/owm_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/pmu_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/prng_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/pt_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/pwrman_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/pwrseq_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/rtc_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/spib_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/spim_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/spis_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/spix_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/sysman_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/system_max32620.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/system_max32620.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/tmr_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/tpu_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/trim_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/uart_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/usb_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/wdt2_regs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device/wdt_regs.h"/>
+                        </Folder>
+                        <Folder Name="mxc">
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/adc.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/adc.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/aes.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/aes.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/clkman.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/clkman.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/crc.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/crc.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/flc.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/flc.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/gpio.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/gpio.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/i2cm.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/i2cm.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/i2cs.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/i2cs.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/icc.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/icc.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/ioman.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/ioman.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/lp.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/lp.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/maa.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/maa.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_assert.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_assert.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_config.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_errors.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_lock.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_lock.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_sys.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/mxc_sys.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/nvic_table.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/owm.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/owm.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/pmu.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/pmu.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/prng.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/prng.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/pt.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/pt.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/rtc.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/rtc.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spim.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spim.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spis.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spis.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spix.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/spix.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/tmr.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/tmr.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/tmr_utils.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/tmr_utils.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/uart.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/uart.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/wdt.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/wdt.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/wdt2.c"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/mxc/wdt2.h"/>
+                        </Folder>
+                        <Folder Name="TARGET_MAX35103EVKIT2">
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/TARGET_MAX35103EVKIT2/PeripheralNames.h"/>
+                            <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/TARGET_MAX35103EVKIT2/PinNames.h"/>
+                        </Folder>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/analogin_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/device.h"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/gpio_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/gpio_irq_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/gpio_object.h"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/i2c_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/objects.h"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/PeripheralPins.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/PeripheralPins.h"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/pinmap.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/port_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/PortNames.h"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/pwmout_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/rtc_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/serial_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/sleep.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/spi_api.c"/>
+                        <F N="../mbed-os/targets/TARGET_Maxim/TARGET_MAX32620C/us_ticker.c"/>
+                    </Folder>
+                    <F N="../mbed-os/targets/TARGET_Maxim/mbed_rtx.h"/>
+                </Folder>
+            </Folder>
+            <Folder Name="tools">
+                <Folder Name="data">
+                    <Folder Name="rpc">
+                        <F N="../mbed-os/tools/data/rpc/class.cpp"/>
+                        <F N="../mbed-os/tools/data/rpc/RPCClasses.h"/>
+                    </Folder>
+                </Folder>
+            </Folder>
+            <F N="../mbed-os/mbed.h"/>
+        </Folder>
+    </Files>
+</Project>

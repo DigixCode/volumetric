@@ -1,0 +1,9 @@
+{
+    "config": {
+        "MAX3510x": {
+            "help": "specifies which TDC chip being used",
+	    "macro_name": "MAX35103",
+	    "value":1
+        }
+    }
+}
