@@ -1,3 +1,6 @@
 [submodule "board/max35103evkit2"]
 	path = board/max35103evkit2
 	url = https://github.com/maxim-ic-flow/max35103evkit2.git
+[submodule "mbed-os"]
+	path = mbed-os
+	url = https://github.com/maximmbed/mbed.git
