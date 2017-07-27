@@ -28,11 +28,11 @@ git submodule update --recursive --remote
 
 ## Tools
 
-<b>IAR Embedded Workbench for ARM 7.70+
+<b>IAR Embedded Workbench for ARM 7.70+</b>
 <p>https://www.iar.com/iar-embedded-workbench/tools-for-arm/arm-cortex-m-edition/
 
-<b>Keil uVision V5.23.0.0+
+<b>Keil uVision V5.23.0.0+</b>
 <p>http://www2.keil.com/mdk5
 
-<b>ARM mbed
+<b>ARM mbed</b>
 <p>Not yet available.
