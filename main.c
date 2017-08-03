@@ -80,7 +80,8 @@ int main(void)
 	double_t last_flow = 0.0, sum_flow, flow;
 
 	board_init();
-
+	GPIO_OutPut(&g_board_relay,0);
+	
 	uint32_t one_second = SystemCoreClock ;
 
 	double_t shutoff = 100.0 * board_read_bcd_switches();
@@ -105,7 +106,7 @@ int main(void)
 			{
 				float_t t2_ideal = max3510x_ratio_to_float(s_results.up.t2_ideal);
 				float_t t1_t2 = max3510x_ratio_to_float(s_results.up.t1_t2);
-				if( t1_t2 >= 0.95f && t2_ideal > 0.50f )
+				if( t2_ideal >= 0.95f && t1_t2 > 0.50f )
 				{
 					// Use the ratios to validate measuremnets.  If air bubbles are in the flow body, attenuation
 					// can cause the t1 wave to be missed.  Production applicaiotns can use more sophisticatd recovery
