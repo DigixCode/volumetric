@@ -6,4 +6,5 @@ mbed-os/
 se/
 dbg/
 .mbed
+*.docx
 
