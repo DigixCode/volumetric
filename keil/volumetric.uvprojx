@@ -529,6 +529,11 @@
               <FileType>1</FileType>
               <FilePath>..\board\max35103evkit2\csl\PeriphDriver\Source\wdt2.c</FilePath>
             </File>
+            <File>
+              <FileName>mxc_lock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\board\max35103evkit2\csl\PeriphDriver\Source\mxc_lock.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

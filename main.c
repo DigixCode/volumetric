@@ -65,7 +65,7 @@ void max3510x_int_isr(void * pv)
 	{
 		s_timeout_count++;
 	}
-	GPIO_IntClr(&g_board_max3510x_int);
+	board_max3510x_clear_interrupt();
 }
 
 void SysTick_Handler(void)
@@ -77,10 +77,11 @@ void SysTick_Handler(void)
 
 int main(void)
 {
+	bool led_state = false;
 	double_t last_flow = 0.0, sum_flow, flow;
 
-	board_init();
-	GPIO_OutPut(&g_board_relay,0);
+	board_init(max3510x_int_isr);
+	board_relay(true);	// turn on the ssr
 	
 	uint32_t one_second = SystemCoreClock ;
 
@@ -137,13 +138,14 @@ int main(void)
 		}
 		if(  shutoff <= sum_flow )
 		{
-			GPIO_OutToggle(&g_board_relay);
+			board_relay(false);
 			board_printf("RELAY OFF\r\n");
 			while(1);	// done for this cycle
 		}
 		else if(  ts - last_ts > one_second )
 		{
-			GPIO_OutToggle(&g_board_led);
+			board_led(led_state);
+			led_state = !led_state;
 			board_printf("%.2fG, %.2fGPM\r\n", sum_flow, last_flow * CUBIC_METERS_TO_GALLONS * 60.0	); // gallons per minute
 			last_ts = ts;
 		}
