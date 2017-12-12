@@ -46,7 +46,7 @@
 
 #define CUBIC_METERS_TO_GALLONS	264.172
 
-static max3510x_results_t 	s_results;
+static max3510x_tof_results_t 	s_tof_results;
 static volatile uint32_t    s_results_count;
 static volatile uint32_t	s_timeout_count;
 
@@ -58,7 +58,7 @@ void max3510x_int_isr(void * pv)
 
 	if( (status & (MAX3510X_REG_INTERRUPT_STATUS_TOF|MAX3510X_REG_INTERRUPT_STATUS_TO)) == MAX3510X_REG_INTERRUPT_STATUS_TOF )
 	{
-		max3510x_read_results( &g_max35103, &s_results );
+		max3510x_read_tof_results( &g_max35103, &s_tof_results );
 		s_results_count++;
 	}
 	else if( status )
@@ -81,6 +81,8 @@ int main(void)
 	double_t last_flow = 0.0, sum_flow, flow;
 
 	board_init(max3510x_int_isr);
+	board_tdc_interrupt_enable(true);
+	
 	board_relay(true);	// turn on the ssr
 	
 	uint32_t one_second = SystemCoreClock ;
@@ -102,11 +104,11 @@ int main(void)
 		if( s_results_count )
 		{
 			// these checks can help flush out SPI issues.  Provided here as a refernce for new board designs.
-			if( max3510x_validate_measurement( &s_results.up, transducer_hit_count() ) &&
-				max3510x_validate_measurement( &s_results.down, transducer_hit_count() ) )
+			if( max3510x_validate_measurement( &s_tof_results.up, transducer_hit_count() ) &&
+				max3510x_validate_measurement( &s_tof_results.down, transducer_hit_count() ) )
 			{
-				float_t t2_ideal = max3510x_ratio_to_float(s_results.up.t2_ideal);
-				float_t t1_t2 = max3510x_ratio_to_float(s_results.up.t1_t2);
+				float_t t2_ideal = max3510x_ratio_to_float(s_tof_results.up.t2_ideal);
+				float_t t1_t2 = max3510x_ratio_to_float(s_tof_results.up.t1_t2);
 				if( t2_ideal >= 0.95f && t1_t2 > 0.50f )
 				{
 					// Use the ratios to validate measuremnets.  If air bubbles are in the flow body, attenuation
@@ -117,8 +119,8 @@ int main(void)
 					
 					// For more information about attenuation due to undissolved gases, see Maxim application note 6357 "Dealing with Bubbles"
 					
-					double_t up = max3510x_fixed_to_double( &s_results.up.average );
-					double_t down = max3510x_fixed_to_double( &s_results.down.average );
+					double_t up = max3510x_fixed_to_double( &s_tof_results.up.average );
+					double_t down = max3510x_fixed_to_double( &s_tof_results.down.average );
 					flow = last_flow = transducer_flow( up, down );
 				}
 			}
