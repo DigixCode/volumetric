@@ -15,8 +15,8 @@
         <TargetCommonOption>
           <Device>MAX32620</Device>
           <Vendor>Maxim</Vendor>
-          <PackID>Maxim.MAX32620.0.0.0-1.alpha</PackID>
-          <PackURL>http://www.keil.com/pack/</PackURL>
+          <PackID>Maxim.MAX32620.1.0.2</PackID>
+          <PackURL>http://www.mxim.net/microcontroller/pack/</PackURL>
           <Cpu>IRAM(0x20000000,0x00028000) IROM(0x00000000,0x00080000) CPUTYPE("Cortex-M4") FPU2 CLOCK(12000000) ELITTLE</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>
@@ -332,8 +332,8 @@
             <v6WtE>0</v6WtE>
             <v6Rtti>0</v6Rtti>
             <VariousControls>
-              <MiscControls></MiscControls>
-              <Define>TARGET=MAX32620 TARGET_REV=0x4132 MAX35103</Define>
+              <MiscControls>--diag_suppress=1295 --diag_suppress=1296 --diag_suppress=3731 --diag_suppress=1293 --reduce_paths</MiscControls>
+              <Define>TARGET=MAX32620 TARGET_REV=0x4332 MAX35103</Define>
               <Undefine></Undefine>
               <IncludePath>..;..\board\max35103evkit2\csl\CMSIS\Include;..\board\max35103evkit2\csl\CMSIS\Device\Maxim\MAX32620\Include;..\board\max35103evkit2\csl\PeriphDriver\Include;..\board\max35103evkit2\max3510x;..\board\max35103evkit2</IncludePath>
             </VariousControls>

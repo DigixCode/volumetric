@@ -36,3 +36,9 @@ git submodule update --recursive --remote --init
 
 <b>ARM mbed</b>
 <p>Not yet available.
+
+## Miscellaneous
+
+The MAX35103EVKIT2# has two serial ports, the U7 serial port and the USB serial port provided by the PICO debugging module (U11).
+Diagnostic printf's appear on the USB serial port by default, but this can be changed to U7 by changing the default serial port
+defined in board_init() in board.c
